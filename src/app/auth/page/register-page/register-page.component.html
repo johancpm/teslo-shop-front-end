@@ -1,0 +1,30 @@
+<form class=" flex flex-col gap-2" [formGroup]="myForm" (submit)="onSubmit()">
+  <h3 class="text-lg font-montserrat text-center p-2 font-bold ">Registro</h3>
+   <input type="text" class="input" placeholder="Nombre" formControlName="name" />
+   <input type="email" class="input" placeholder="Email" formControlName="email" />
+
+   <input type="password" class="input" placeholder="Password" formControlName="password"/>
+
+   <button class="btn btn-neutral mt-4">Registrar</button>
+   <p class="text-slate-900 text-base text-center">
+     <a routerLink="/auth/login" class="text-secondary">Regresar al Login</a>
+   </p>
+</form>
+
+@if(isRegisterTrue()){
+  <div role="alert" class="alert alert-success absolute bottom-5 right-5">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    </svg>
+    <span>Usuario Registrado Con Exito!</span>
+  </div>
+}@else if(isError()){
+   <div role="alert" class="alert alert-error animate-fadeIn absolute bottom-5 right-5">
+ <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+ </svg>
+ <span>Porfavor verifique la Informacion Ingresada!!</span>
+</div>
+  }
+
+

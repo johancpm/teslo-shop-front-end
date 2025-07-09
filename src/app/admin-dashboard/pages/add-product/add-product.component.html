@@ -1,0 +1,11 @@
+<div class="m-5">
+  @if (gerProducResourse.isLoading()) {
+    <div class="flex justify-center items-center h-screen">
+      <span class="loading loading-spinner loading-lg"></span>
+    </div>
+  }
+  <!--  -->
+  @if(gerProducResourse.hasValue()){
+      <details-product  [product]="gerProducResourse.value()"/>
+  }
+</div>

@@ -1,0 +1,12 @@
+ <section class=" ml-10 mr-10">
+   <h1 class="text-3xl font-bold font-montserrat">Todos Los Productos</h1>
+   <h2 class="text-xl mb-2">Para Todos los Gustos</h2>
+ </section>
+
+
+  <section class=" ml-10 mr-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+   @for (prod of productResorce.value()?.products; track $index) {
+     <product-front-cards [product]="prod" />
+   }
+  </section>
+<pagination-product [pages]="productResorce.value()?.pages ?? 0" [currentPage]="paginationService.currentPage()"/>

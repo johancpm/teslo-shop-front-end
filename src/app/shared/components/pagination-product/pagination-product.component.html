@@ -1,0 +1,15 @@
+<section class=" container mx-auto flex justify-center mb-2 mt-2 ">
+  <div class="join ">
+    @for (page of getArrayList(); track $index) {
+      <button
+      class="join-item btn"
+      [class.btn-primary]="page === activePage()"
+      [routerLink]="[]"
+      [queryParams]="{page}"
+      (click)="activePage.set(page)"
+      >
+        {{page}}
+      </button>
+    }
+  </div>
+</section>

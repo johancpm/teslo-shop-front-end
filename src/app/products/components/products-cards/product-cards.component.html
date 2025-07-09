@@ -1,0 +1,16 @@
+
+<div class="card card-compact bg-base-200 shadow-xl animate-fadeIn ">
+  <figure class="box-content size-62  p-4 mx-auto">
+    <img
+      [src]="product().images | productImagesPipe"
+      alt="Shoes"
+      class="rounded-xl object-cover w-full h-full" />
+  </figure>
+  <div class="card-body items-center text-center h-[20vh] ">
+      <h2 class=" card-title text-sm text-green-600 font-montserrat ">{{product().title}}</h2>
+      <p class="text-xs">{{product().description | slice:0:70 }}...</p>
+    <div class="card-actions">
+      <a class="link link-accent" [routerLink]="['/product', product().id]"  >Ver Mas...</a>
+    </div>
+  </div>
+</div>

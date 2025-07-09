@@ -1,0 +1,63 @@
+
+<div class="navbar bg-base-100 shadow-sm">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+      </div>
+      <ul
+        tabindex="0"
+        class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        <li><a>Item 1</a></li>
+        <li>
+          <a>Parent</a>
+          <ul class="p-2">
+            <li routerLink="gender/men" routerLinkActive="text-secondary">
+              <a>Hombres</a>
+            </li>
+            <li routerLink="gender/women" routerLinkActive="text-secondary">
+              <a>Mujeres</a>
+            </li>
+            <li routerLink="gender/kids" routerLinkActive="text-secondary">
+              <a>Niños</a>
+            </li>
+          </ul>
+        </li>
+        <li><a>Item 3</a></li>
+      </ul>
+    </div>
+    <a
+    routerLink="/"
+    class="  btn btn-ghost text-xl font-montserrat ">
+      Teslo
+     <span class="text-secondary ">| Shop</span>
+    </a>
+  </div>
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li routerLink="gender/men" routerLinkActive="text-secondary">
+              <a>Hombres</a>
+            </li>
+            <li routerLink="gender/women" routerLinkActive="text-secondary">
+              <a>Mujeres</a>
+            </li>
+            <li routerLink="gender/kids" routerLinkActive="text-secondary">
+              <a>Niños</a>
+            </li>
+    </ul>
+  </div>
+  <div class="navbar-end">
+    @if (authServise.user()?.roles?.includes('admin')) {
+      <a routerLink="/admin/" class="btn btn-accent">Panel Administrativo</a>
+    }
+
+    @if (authServise.authStatus() === 'authenticated' ) {
+      <p class=" text-base text-accent ml-2 mr-2">{{authServise.user()!.fullName}}</p>
+      <a class="btn btn-error" routerLink="/" (click)="logOut()">Salir</a>
+    }@else if( authServise.authStatus() === 'not-authenticated') {
+      <a class="btn btn-accent" routerLink="auth/">Login</a>
+    }@else {
+      <p class="text-base text-black">...</p>
+    }
+  </div>
+</div>

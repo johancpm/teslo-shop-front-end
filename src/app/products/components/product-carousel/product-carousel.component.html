@@ -1,0 +1,34 @@
+<div class="swiper object-cover" #swiperDiv>
+  <!-- Additional required wrapper -->
+  <div class="swiper-wrapper">
+    @for (img of images(); track $index) {
+      <div class="swiper-slide">
+        <img
+        [src]="img | productImagesPipe "
+        alt="Producto"
+        class=" w-full object-cover animate-fadeIn"
+        >
+      </div>
+    }@empty{
+      <div class="swiper-slide">
+        <img
+        [src]=" null | productImagesPipe "
+        alt="Producto"
+        class=" w-full object-cover  animate-fadeIn"
+        >
+      </div>
+    }
+    <!-- Slides -->
+
+    ...
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+
+  <!-- If we need scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>

@@ -1,0 +1,72 @@
+<div class="overflow-x-auto ">
+  <table class="table">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>
+          <label>
+            <input type="checkbox" class="checkbox" />
+          </label>
+        </th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Stock </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      @for (produc of products(); track produc.id) {
+
+        <tr>
+          <th>
+            <label>
+              <input type="checkbox" class="checkbox" />
+            </label>
+          </th>
+          <td>
+            <div class="flex items-center gap-3">
+              <div class="avatar">
+                <div class="mask mask-squircle h-12 w-12">
+                  <img
+                    [src]="produc.images| productImagesPipe "
+                    alt="Avatar Tailwind CSS Component" />
+                </div>
+              </div>
+              <div>
+                <a
+                [routerLink]="['/admin/add-product', produc.id]"
+                class="font-bold hover:text-primary transition-colors duration-200">{{produc.title}}
+                </a>
+                 <div class="text-sm opacity-50">
+                   {{produc.sizes.join(",")}}
+                 </div>
+              </div>
+            </div>
+          </td>
+          <td>
+            {{produc.price | currency }}
+          </td>
+          <td>
+            @if(produc.stock <= 10){
+            <span class="badge badge-error">{{produc.stock}}</span>
+          }@else if (produc.stock <= 20) {
+              <span class="badge badge-warning">{{produc.stock}}</span>
+            }@else {
+              <span class="badge badge-accent">{{produc.stock}}</span>
+            }
+
+          </td>
+          <th>
+            <a
+            [routerLink]="['/admin/add-product', produc.id]"
+            class="btn btn-ghost text-accent btn-xs">
+            Detalles
+            </a>
+          </th>
+        </tr>
+      }
+
+    </tbody>
+  </table>
+</div>

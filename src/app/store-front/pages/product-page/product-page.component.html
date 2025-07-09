@@ -1,0 +1,25 @@
+
+<section class="container mx-auto">
+  @if(getProductResource.isLoading()) {
+    <div class="flex justify-center items-center h-screen">
+       <span class="loading loading-spinner loading-lg"></span>
+    </div>
+  }
+
+  @if(getProductResource.hasValue()){
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <!-- imagenes -->
+       <div class="container mx-auto ">
+         <product-carousel [images]="getProductResource.value().images"/>
+       </div>
+
+
+      <div>
+        <h2 class=" text-2xl text-green-600 font-bold font-montserrat">{{getProductResource.value().title}}</h2>
+       <div class="divider"></div>
+        <p>{{getProductResource.value().description}}</p>
+      </div>
+
+    </div>
+  }
+</section>

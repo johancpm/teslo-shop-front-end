@@ -9,8 +9,9 @@ import { authInterceptor } from '@auth/interceptors/auth.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes, withHashLocation()),
-
+    provideRouter(routes),
+    /* withHashLocation() agregar el anterior codigo para lanzar
+    aplicacion a produccion, dentro de providerRouter */
     provideHttpClient(
       withFetch(),
       withInterceptors([loggingInterceptor, authInterceptor])

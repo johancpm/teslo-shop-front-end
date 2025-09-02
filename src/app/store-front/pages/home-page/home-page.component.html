@@ -1,10 +1,10 @@
- <section class=" ml-10 mr-10">
-   <h1 class="text-3xl font-bold font-montserrat">Todos Los Productos</h1>
+ <section class="max-w-7xl mx-auto justify-center  md:justify-start ml-5  grid p-3 ">
+   <h1 class="text-3xl  font-bold font-montserrat">Todos Los Productos</h1>
    <h2 class="text-xl mb-2">Para Todos los Gustos</h2>
  </section>
 
 
-  <section class=" ml-10 mr-10  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+  <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
    @for (prod of productResorce.value()?.products; track $index) {
      <product-front-cards [product]="prod" />
    }

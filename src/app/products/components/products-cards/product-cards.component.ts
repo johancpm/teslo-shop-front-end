@@ -13,7 +13,18 @@ import { ProductImagePipe } from '@products/pipes/product-images.pipe';
 export class ProductCardsComponent {
  product = input.required<Product>()
 
+ classAccent: boolean = false;
+
  urlImages = computed(() => {
   return  `http://localhost:3000/api/files/product/${this.product()?.images[0]}`
  } )
+
+ mouseEnterDetecte (event: Event) {
+  this.classAccent = true
+ }
+
+ museOutDetecte (event: Event) {
+  this.classAccent = false
+ }
+
 }

@@ -12,13 +12,13 @@
         <li>
           <a>Parent</a>
           <ul class="p-2">
-            <li routerLink="gender/men" routerLinkActive="text-secondary">
+            <li routerLink="gender/men" routerLinkActive="text-error">
               <a>Hombres</a>
             </li>
-            <li routerLink="gender/women" routerLinkActive="text-secondary">
+            <li routerLink="gender/women" routerLinkActive="text-error">
               <a>Mujeres</a>
             </li>
-            <li routerLink="gender/kids" routerLinkActive="text-secondary">
+            <li routerLink="gender/kids" routerLinkActive="text-error">
               <a>Niños</a>
             </li>
           </ul>
@@ -28,34 +28,45 @@
     </div>
     <a
     routerLink="/"
-    class="  btn btn-ghost text-xl font-montserrat ">
-      Teslo
-     <span class="text-secondary ">| Shop</span>
+    class="  btn btn-ghost text-xl font-bold  ">
+     <h5 class=" hidden md:block ">OVNI</h5>
+      <img class="w-10" src="./assents/images/ovn.png">
+      <h5 class="text-error hidden md:block">RT</h5>
     </a>
   </div>
   <div class="navbar-center hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li routerLink="gender/men" routerLinkActive="text-secondary">
+      <li routerLink="gender/men" routerLinkActive="text-error">
               <a>Hombres</a>
             </li>
-            <li routerLink="gender/women" routerLinkActive="text-secondary">
+            <li routerLink="gender/women" routerLinkActive="text-error">
               <a>Mujeres</a>
             </li>
-            <li routerLink="gender/kids" routerLinkActive="text-secondary">
+            <li routerLink="gender/kids" routerLinkActive="text-error">
               <a>Niños</a>
             </li>
     </ul>
   </div>
-  <div class="navbar-end">
+  <div class="navbar-end flex gap-3">
     @if (authServise.user()?.roles?.includes('admin')) {
-      <a routerLink="/admin/" class="btn btn-accent">Panel Administrativo</a>
+      <div class="hidden md:block">
+        <a routerLink="/admin/" class="btn btn-outline btn-error   ">Panel Administrativo</a>
+      </div>
+      <div class=" md:hidden text-xl btn btn-outline btn-error btn-circle items-center ">
+        <i class="fa-solid fa-gear  "></i>
+      </div>
     }
 
     @if (authServise.authStatus() === 'authenticated' ) {
-      <p class=" text-base text-accent ml-2 mr-2">{{authServise.user()!.fullName}}</p>
-      <a class="btn btn-error" routerLink="/" (click)="logOut()">Salir</a>
+      <div class="text hidden md:block border-1 p-1.5 rounded-sm border-error  ">
+        <p class="  text-error  ml-2 mr-2">{{authServise.user()!.fullName}}</p>
+      </div>
+      <div class="image md:hidden text-xl w-10 h-10 rounded-full border-error text-center border-1 p-1">
+        <i class="fa-solid fa-user text-error"></i>
+      </div>
+      <a class="btn btn-dash btn-error" routerLink="/" (click)="logOut()">Salir</a>
     }@else if( authServise.authStatus() === 'not-authenticated') {
-      <a class="btn btn-accent" routerLink="auth/">Login</a>
+      <a class="btn btn-info" routerLink="auth/">Login</a>
     }@else {
       <p class="text-base text-black">...</p>
     }
